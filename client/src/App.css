@@ -26,6 +26,10 @@ header h1 {
   font-weight: 300;
 }
 
+.search-area{
+  padding-top: 10px;
+}
+
 .App-intro {
   font-size: large;
 }
@@ -33,4 +37,27 @@ header h1 {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+/*BookList Styles*/
+
+.list {
+  display: grid;
+  margin: 20px 0 50px 0;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 1em;
+}
+
+.card-container {
+  width: 250px;
+  border: 1px solid black;
+  margin: 0 auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.save-button {
+  padding-top: 10px;
 }

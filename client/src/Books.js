@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchArea from './SearchArea';
 import request from 'superagent';
+import BookList from './BookList';
+import BookShelf from './BookShelf';
 
 
 class Books extends Component {
@@ -19,14 +21,15 @@ class Books extends Component {
             .query({ q: this.state.searchField })
             .then((data) => {
                 console.log(data);
+                this.setState({ books: [...data.body.items] });
             })
     }
 
-    componentDidMount() {
-        fetch('/api/books')
-            .then(res => res.json())
-            .then(books => this.setState({ books }, () => console.log('Customers fetched..', books)))
-    }
+    // componentDidMount() {
+    //     fetch('/api/books')
+    //         .then(res => res.json())
+    //         .then(books => this.setState({ books }, () => console.log('Customers fetched..', books)))
+    // }
 
     handleSearch = (e) => {
         console.log(e.target.value);
@@ -36,7 +39,8 @@ class Books extends Component {
     render() {
         return (
             <div>
-                <SearchArea searchBook={this.searchBook} handleSearch={this.handleSearch} componentDidMount={this.componentDidMount} />
+                <SearchArea searchBook={this.searchBook} handleSearch={this.handleSearch} />
+                <BookList books={this.state.books} />
             </div>
         );
     }
